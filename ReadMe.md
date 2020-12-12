@@ -1,3 +1,3 @@
 # -eva-restaurant
 # description 
-[Hosted on Heroku as](https://eva-restaurant.herokuapp.com/)
+[link to Heroku](https://eva-restaurant.herokuapp.com/)
