@@ -7,14 +7,17 @@ const menuSchema = new Schema({
         require: true
     },
    
-    Food:{
+    food:{
         type: String,
         require: true
     },
      price: {
         type: Number, 
-        required: true
+        required: true,
+        get : v =>Math.round(v),
+        set : v => Math.round(v)
     },
+    
     imageurl: {
         type: String,
     },
@@ -22,6 +25,15 @@ const menuSchema = new Schema({
 }, {timestamps: true}
 );
 
-const Menu= mongoose.model("eva-kitchen", blogSchema);
+const Menu= mongoose.model("eva-kitchen", menuSchema);
 
 module.exports = Menu;
+
+// tags: {
+//     type: Array, 
+//     validate: {
+//     validator: function(){
+//         return v && v.length > 0
+//     }
+//     }
+// },
