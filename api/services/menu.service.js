@@ -1,10 +1,9 @@
 const Menu = require('../model/menu.model');
 const CustomError = require('../utils/custom.error');
-const err = require('../utils/custom.error');
 
 class MenuService {
     async getAll() {
-        return await Menu.find().select("category, food, price");
+        return await Menu.find();
     }
     async getOne(id) {
         const menu = await Menu.findOne({ _id: id });
@@ -13,7 +12,7 @@ class MenuService {
     }
 
     async create(data) {
-        const { category, name, price, quantity } = data;
+        const { category, name, price, } = data;
 
         return await new Menu({
 
