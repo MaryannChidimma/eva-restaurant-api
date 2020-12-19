@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const Menu = require('./api/routes/menu.routes')
+const Admin = require('./api/routes/admin.routes')
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -35,6 +36,7 @@ app.get('/',(req,res,next)=>{
 });
 
 app.use('/menu', Menu);
+app.use('/admin', Admin)
 app.use((req, res, next) => {
     const error = new Error('Not Found');
     error.status = 404;
