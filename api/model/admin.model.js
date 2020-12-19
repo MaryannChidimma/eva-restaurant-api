@@ -3,12 +3,8 @@ const Schema = mongoose.Schema;
 
 
 const adminSchema = new Schema(
-  {
-    name: {
-      type: String,
-      trim: true,
-      required: [true, "Name is required"],
-    },
+   {
+  
     email: {
       type: String,
       trim: true,
@@ -18,28 +14,35 @@ const adminSchema = new Schema(
     },
     password: {
       type: String,
-    },
-    image: {
-      type: String,
-    },
-    role: {
-      type: String,
-      trim: true,
-      enum: ["user", "admin"],
-      default: "admin"
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    isVerified: {
-      type: Boolean,
-      default: false,
     }
-  },
-  {
-    timestamps: true
   }
 );
-const Admin =  mongoose.model('admins', adminSchema)
+const Admin =  mongoose.model('admin', adminSchema)
 module.exports = Admin;
+
+//   name: {
+  //     type: String,
+  //     trim: true,
+  //     required: [true, "Name is required"],
+  //     minlength: 3,
+  //     maxlength: 50
+  //   },
+ //   isActive: {
+  //     type: Boolean,
+  //     default: true,
+  //   },
+  //   isVerified: {
+  //     type: Boolean,
+  //     default: false,
+  //   }
+  // },
+  // {
+    // image: {
+    //   type: String,
+    // },
+    // role: {
+    //   type: String,
+    //   trim: true,
+    //   enum: ["user", "admin"],
+    //   default: "admin"
+    // },
