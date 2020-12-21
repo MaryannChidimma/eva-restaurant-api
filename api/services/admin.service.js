@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Admin = require('../model/admin.model');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const CustomError = require('../utils/custom.error');
 require('dotenv').config()
 class AdminService {
@@ -20,14 +19,14 @@ class AdminService {
              email: email,
              password:hashed
             })
-        const token = this.generateJwtToken(admin.email, admin._Id)
+        const token = admin.generateAuthToken();
         await admin.save();
         
         return {
          _id: admin._id,
           email: admin.email,
           password:hashed,
-          token: token
+   oken: token
         };
     }
      
@@ -42,27 +41,17 @@ class AdminService {
         const isTrue = await bcrypt.compare(password, admin.password)
         if (!isTrue) throw new CustomError("Incorrect email or password");
     
-        const token = this.generateJwtToken(admin.email, admin._Id)
+        const token = admin.generateAuthToken();
     
         return data = {
           admin: admin,
           token: token
         };
       }
-
+   
       async delete(id) {
         const admin = await Admin.remove({ _id: id });
         return admin
-    }
-    
-    generateJwtToken = (email, id) => {
-        return jwt.sign({
-            email: email,
-            admin_Id: id
-        },
-            process.env.JWT_KEY,
-            { expiresIn: '1h' }
-        );
     }
 
 }
