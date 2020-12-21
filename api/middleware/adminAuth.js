@@ -1,16 +1,17 @@
 const jwt = require('jsonwebtoken');
+const CustomError = require('../utils/custom.error');
 
 
 module.exports = (req, res, next) => {
+    const token = req.headers.authorization.split(" ")[1];
+    if(!token) throw new CustomError('Access denied no token provided', 401)
     try {
-        const token = req.headers.authorization.split(" ")[1];
-        console.log(token);
         const decoder = jwt.verify(token, process.env.JWT_KEY)
-        req.adminData = decoder;
+        req.admin = decoder;
         next();
     }
     catch (error) {
-        res.status(401).json({ message: "Authentication failed" })
+        throw new CustomError('invalid token')
     };
 
 };
