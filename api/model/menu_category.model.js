@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 const categorySchema = new Schema({
 categoryName: {
         type: String,
-        require: true
+        require: true,
+        enum : ['Breakfast, Lunch, Dinner'],
+        uppercase: true,
+        trim: true
     },
    
 categoryDescription:{
