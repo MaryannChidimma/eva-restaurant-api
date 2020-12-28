@@ -4,13 +4,13 @@ const response = require("../utils/response");
 
 class MenuContoller {
   async create(req, res, next) {
-      const result = await MenuService.create(req.body);
+      const result = await MenuService.create(req.body, req.file);
       res.status(201).send(response("Menu created", result));
   }
 
   async getAll(req, res) {
     const result = await MenuService.getAll();
-      res.status(200).send(response("All users", result));
+      res.status(200).send(response("All menu", result));
   }
 
   async getOne(req, res, next) {
