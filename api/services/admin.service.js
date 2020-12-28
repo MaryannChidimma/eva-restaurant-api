@@ -23,10 +23,8 @@ class AdminService {
         await admin.save();
         
         return {
-         _id: admin._id,
-          email: admin.email,
-          password:hashed,
-   oken: token
+         admin: admin,
+         token: token
         };
     }
      
