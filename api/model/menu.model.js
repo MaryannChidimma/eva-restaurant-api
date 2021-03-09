@@ -3,9 +3,7 @@ const Schema = mongoose.Schema;
 
 const menuSchema = new Schema({
    category: {
-        type: String,
-        require: true
-    },
+    type: mongoose.Schema.Types.ObjectId, ref: 'categorySchema', required: true},
    
     food:{
         type: String,
@@ -14,8 +12,8 @@ const menuSchema = new Schema({
      price: {
         type: Number, 
         required: true,
-        get : v =>Math.round(v),
-        set : v => Math.round(v)
+        // get : v =>Math.round(v),
+        // set : v => Math.round(v)
     },
     
     imageurl: {
@@ -29,11 +27,3 @@ const Menu= mongoose.model("menu", menuSchema);
 
 module.exports = Menu;
 
-// tags: {
-//     type: Array, 
-//     validate: {
-//     validator: function(){
-//         return v && v.length > 0
-//     }
-//     }
-// },
