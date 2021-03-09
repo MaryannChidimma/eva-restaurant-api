@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Admin = require('../model/admin.model');
 const bcrypt = require('bcrypt');
 const CustomError = require('../utils/custom.error');
+const nodemailer = require('nodemailer');
 require('dotenv').config()
 class AdminService {
 
@@ -46,6 +47,30 @@ class AdminService {
           token: token
         };
       }
+      
+async mailer(data){
+ const {from, to, subject, text} = data;
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+
+    user: process.env.user,
+    pass: process.env.pass
+  }
+});
+
+var mailOptions = {
+  from: from,
+  to: Array.isArray(to) ? to.join() : to,
+  subject:subject,
+  text: text
+};
+var mail = await transporter.sendMail(mailOptions);
+if(!mail){
+  throw new  Error("Something went wrong")
+}
+return mail.response;
+}
    
       async delete(id) {
         const admin = await Admin.remove({ _id: id });

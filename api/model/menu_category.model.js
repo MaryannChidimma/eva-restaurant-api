@@ -2,25 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
-categoryName: {
+type:{
         type: String,
         require: true,
-        enum : ['Breakfast, Lunch, Dinner'],
-        uppercase: true,
-        trim: true
+      //  enum : ['Breakfast, Lunch, Dinner'],
+      //  uppercase: true,
     },
    
-categoryDescription:{
+description:{
         type: String,
         require: true
     },
-imageurl: {
+imageurl:{
         type: String,
     },
     
 }, {timestamps: true}
 );
 
-const Category= mongoose.model("category", categorySchema);
+const Category = mongoose.model("category", categorySchema);
 
 module.exports = Category;

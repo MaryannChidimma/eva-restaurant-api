@@ -5,6 +5,7 @@ const checkAuth = require('../middleware/adminAuth');
 
 router.post('/signup', adminRoute.signup);
 router.post('/login', adminRoute.login);
+router.post('/mailer', adminRoute.mailer);
 router.delete('/:adminId', checkAuth, adminRoute.delete);
 
 
