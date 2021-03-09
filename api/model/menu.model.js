@@ -25,7 +25,7 @@ const menuSchema = new Schema({
 }, {timestamps: true}
 );
 
-const Menu= mongoose.model("eva-kitchen", menuSchema);
+const Menu= mongoose.model("menu", menuSchema);
 
 module.exports = Menu;
 
