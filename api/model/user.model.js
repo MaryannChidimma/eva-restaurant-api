@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const adminSchema = new Schema(
+const userSchema = new Schema(
    {
   
     email: {
@@ -19,18 +19,18 @@ const adminSchema = new Schema(
     }
   }
 );
-adminSchema.methods.generateAuthToken = function (){
+userSchema.methods.generateAuthToken = function (){
     return jwt.sign({
         email: this.email,
-        admin_Id: this._id
+        user_Id: this._id
     },
         process.env.JWT_KEY,
         { expiresIn: '1h' }
     );
 }
 
-const Admin =  mongoose.model('admin', adminSchema)
-module.exports = Admin;
+const User =  mongoose.model('user', userSchema)
+module.exports = User;
 
 //   name: {
   //     type: String,
@@ -55,6 +55,6 @@ module.exports = Admin;
     // role: {
     //   type: String,
     //   trim: true,
-    //   enum: ["user", "admin"],
-    //   default: "admin"
+    //   enum: ["user", "user"],
+    //   default: "user"
     // },

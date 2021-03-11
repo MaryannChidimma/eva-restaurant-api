@@ -19,7 +19,7 @@ class OrderController {
   }
 
   async update(req, res) {
-    const result = await MenuService.update(req.params.foodId, req.body);
+    const result = await OrderService.update(req.params.orderId, req.body);
     res.status(200).send(response("order updated", result));
 }
  async delete(req, res) {

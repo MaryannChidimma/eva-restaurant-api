@@ -14,7 +14,7 @@ class MenuService {
     }
 
     async create(data, filedata) {
-        const { category, name, price, } = data;
+        const { category, food , price, } = data;
         let { path, originalname } = filedata
         cloudinary.config({
             cloud_name: process.env.cloud_name,

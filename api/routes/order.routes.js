@@ -1,7 +1,7 @@
 require('express-async-errors');
 const router = require("express").Router();
 const OrderRoute = require("../controllers/order.controller");
-const checkAuth = require('../middleware/adminAuth');
+const checkAuth = require('../middleware/userAuth');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/'});
 

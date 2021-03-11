@@ -5,6 +5,7 @@ const orderSchema = mongoose.Schema(
         _id: mongoose.Schema.Types.ObjectId,
         foodId: { type: mongoose.Schema.Types.ObjectId, ref: 'menus', required: true },
         quantity: { type: Number, default: 1 },
+    
         state:{
             type: String,
             require: true,

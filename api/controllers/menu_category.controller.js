@@ -5,7 +5,7 @@ const response = require("../utils/response");
 class CategoryContoller {
   async create(req, res, next){
     try{
-      const result = await CategoryService.create(req.body);
+      const result = await CategoryService.create(req.body, req.file);
       res.status(201).send(response("category created", result));
     }catch(err){
       next(err)
