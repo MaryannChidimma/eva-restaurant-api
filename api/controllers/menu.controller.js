@@ -24,7 +24,7 @@ class MenuContoller {
   }
 
  async delete(req, res, next) {
-      const result = await MenuService.delete(req.params.userId);
+      const result = await MenuService.delete(req.params.foodId);
       res.status(200).send(response("menu deleted", result));
   }
 }

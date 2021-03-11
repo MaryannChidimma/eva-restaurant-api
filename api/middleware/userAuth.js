@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     if(!token) throw new CustomError('Access denied no token provided', 401)
     try {
         const decoder = jwt.verify(token, process.env.JWT_KEY)
-        req.admin = decoder;
+        req.user = decoder;
         next();
     }
     catch (error) {

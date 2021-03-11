@@ -5,8 +5,8 @@ const categorySchema = new Schema({
 type:{
         type: String,
         require: true,
-      //  enum : ['Breakfast, Lunch, Dinner'],
-      //  uppercase: true,
+        enum : ['BREAKFAST', 'LUNCH', 'DINNER']
+      // uppercase: true,
     },
    
 description:{

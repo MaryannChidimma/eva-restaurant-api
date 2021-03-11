@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const Menu = require('./api/routes/menu.routes')
-const Admin = require('./api/routes/admin.routes')
+const User = require('./api/routes/user.routes')
 const Order = require('./api/routes/order.routes')
 const Category = require('./api/routes/menu_category.routes');
 
@@ -45,13 +45,12 @@ passport.authenticate('google', { scope:
     [ 'email', 'profile' ] }
 ));
 
-app.get( '/auth/google/callback',
-  passport.authenticate( 'google', {
-      successRedirect: '/auth/google/success',
-      failureRedirect: '/auth/google/failure'
-}));
+app.get('/auth/google/callback' ,passport.authenticate( 'google', {
+    failureRedirect: '/'}),(res, req)=>{
+     res.redirect('/dashboard')
+    }),
 app.use('/menu', Menu);
-app.use('/admin', Admin)
+app.use('/user', User)
 app.use('/order', Order)
 app.use('/category', Category)
 
